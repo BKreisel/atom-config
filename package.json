@@ -16,6 +16,7 @@
   },
   "homepage": "https://github.com/BKreisel/atom-config",
   "dependencies": {
-    "commander": "^2.6.0"
+    "commander": "^2.6.0",
+    "prompt": "^0.2.14"
   }
 }
