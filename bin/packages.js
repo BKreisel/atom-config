@@ -7,6 +7,7 @@
 var exec = require('child_process').exec;
 var helpers = require('./help');
 var sys = require('sys');
+var fs = require('fs');
 
 /**
  * Functions
@@ -40,8 +41,30 @@ var clean = function() {
  });
 }
 
+var save = function(filename) {
+  console.log("\nSaving current configuration to: %s\n",filename);
+  exec("apm list -i -b", function(error,stdout,stderror) {
+    var packages = stdout.split("\n");
+
+    for (var i = 0, len = packages.length; i < len; i++) {
+      var package = packages[i].substring(0,packages[i].indexOf("@"));
+      packages[i] = package;
+    }
+    packages = packages.filter(function(n){ return n.length != 0 });
+    packages = "PKGs:[" + packages.join(",") + "]\n";
+    fs.writeFile(filename, packages, function(err) {
+      if(err) {
+        console.log(err);
+      } else {
+        console.log("Configuration Saved!");
+      }
+    });
+  });
+}
+
 
 
 
 module.exports.list = list;
 module.exports.clean = clean;
+module.exports.save = save;

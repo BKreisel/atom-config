@@ -29,6 +29,16 @@ program
     packages.clean();
 });
 
+program
+  .command('save [filename]')
+  .description('remove all installed packages in Atom')
+  .action(function(filename){
+    if(typeof(filename) === "undefined") {
+      console.log("Using default filename: atom.config");
+      filename = "atom.config";
+    }
+    packages.save(filename);
+});
 
 program.version(version);
 
