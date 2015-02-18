@@ -4,7 +4,7 @@
  * Module dependencies.
  */
 var program = require('commander');
-var list = require('./list');
+var packages = require('./packages');
 
 /**
  * Init.
@@ -19,7 +19,7 @@ program
   .command('list')
   .description('list currently installed packages')
   .action(function(){
-    list.getList();
+    packages.list();
 });
 
 

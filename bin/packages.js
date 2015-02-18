@@ -11,9 +11,9 @@ var helpers = require('./help');
  * Functions
  */
 
-var getList = function() {
+var list = function() {
  console.log("Installed Packages:");
  exec("apm list -i", helpers.print);
 }
 
-module.exports.getList = getList;
+module.exports.list = list;
