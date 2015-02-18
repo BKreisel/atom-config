@@ -1,0 +1,21 @@
+{
+  "name": "atom-config",
+  "version": "0.1.0",
+  "description": "Configuration Tool for sharing configurations across multiple installations of Github's Atom Text Editor",
+  "bin": {
+    "atom-config": "bin/atom-config.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://bkreisel@github.com/BKreisel/atom-config.git"
+  },
+  "author": "Brandon Kreisel <kreiselb@gmail.com> (http://www.github.com/bkreisel)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/BKreisel/atom-config/issues"
+  },
+  "homepage": "https://github.com/BKreisel/atom-config",
+  "dependencies": {
+    "commander": "^2.6.0"
+  }
+}
