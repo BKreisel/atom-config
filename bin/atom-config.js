@@ -4,24 +4,29 @@
  * Module dependencies.
  */
 var program = require('commander');
+var list = require('./list');
 
 /**
  * Init.
  */
-var version = "0.1.0"
+var version = "0.1.0";
 
 /**
  * Config.
  */
+
 program
-  .version(version)
-  .command('export [filename]', "export installed packages")
-  .command('list', 'list packages installed')
-  .parse(process.argv);
+  .command('list')
+  .description('list currently installed packages')
+  .action(function(){
+    list.getList();
+});
 
 
-/**
- * Do Work
- */
+program.version(version);
 
-console.log('Atom Configuration tool version %s',version);
+console.log('Atom Configuration Tool version %s',version);
+
+program.parse(process.argv);
+
+if (!program.args.length) program.help();
