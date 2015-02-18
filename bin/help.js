@@ -3,13 +3,33 @@
 /**
  * Module dependencies.
  */
-var sys = require('sys');
+var prompt = require('prompt');
 
 /**
  * Functions
  */
-var print = function(error, stdout, stderr) {
-   sys.puts(stdout);
+
+
+var confirm = function(callback) {
+  var schema = {
+    properties: {
+      confirm: {
+        pattern: /^[yYnN]$/,
+        message: 'Please Enter Yes (y) or No (n)',
+        required: true
+      }
+    }
+  };
+
+  prompt.start();
+  console.log("Do you want to continue? Yes (y) / No (n)");
+  prompt.get(schema, function (err, status) {
+    if(status.confirm.toLowerCase() == "y"){
+      callback();
+    } else {
+      console.log("Aborted...");
+    }
+  });
 }
 
-module.exports.print = print;
+module.exports.confirm = confirm;
