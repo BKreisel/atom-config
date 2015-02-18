@@ -22,6 +22,13 @@ program
     packages.list();
 });
 
+program
+  .command('clean')
+  .description('remove all installed packages in Atom')
+  .action(function(){
+    packages.clean();
+});
+
 
 program.version(version);
 
