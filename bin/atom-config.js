@@ -9,7 +9,7 @@ var packages = require('./packages');
 /**
  * Init.
  */
-var version = "0.1.0";
+var version = "0.1.2";
 
 /**
  * Config.

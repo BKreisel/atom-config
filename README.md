@@ -14,14 +14,20 @@ Run `npm install -g atom-config`
 ##Usage
 
 ###Commands
-###Exporting current configuration
-    atom-config save [filename]
+* `save [filename]` - saves current Atom packages into a configuration file
 
-###Importing a configuration file   
-    atom-config load [filename]
+* `load [filename]` - loads and installs packages from a configuration file
 
-###List currently-installed Atom packages
-    atom-config list
+* `list` - lists currently installed packages
+
+* `clean` - uninstalls all user packages from Atom
+
+
+###Examples
+
+* `atom-config save atom.conf` - Saves current atom package configuration to atom.conf
+
+* `atom-config load atom.conf` - Installs all packages in atom.conf configuration file
 
 ##Contributing
 
