@@ -1,5 +1,10 @@
 #atom-config [![Build Status](https://travis-ci.org/BKreisel/atom-config.svg)](https://travis-ci.org/BKreisel/atom-config)
 
+##Roadmap / TODO
+
+* Add loading and saving of Atom Settings
+* ???? .... PROFIT!
+
 Configuration Tool for sharing configurations across multiple installations of Github's Atom Text Editor
 ##Requirements
 * Github's [Atom Text Editor](https://atom.io/).
