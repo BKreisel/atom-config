@@ -35,7 +35,9 @@ var clean = function() {
      cmd = "apm delete " + packages.join(" ");
      exec(cmd,function(error,stdout,stderror) {
        console.log(stdout);
-       console.log("Cleaned...");
+       if(stderror.length == 0) {
+         console.log("Cleaned...");
+       }
      });
    });
  });
@@ -62,9 +64,38 @@ var save = function(filename) {
   });
 }
 
+var load = function(filename) {
+  fs.readFile(filename, 'utf8', function (err,data) {
+    if (err) {
+      if(err.code == "ENOENT") {
+        return console.log("File not found...");
+      } else {
+        return console.log(err.code);
+      }
+    } else {
+      lines = data.split("\n");
+      if(lines[0].indexOf("PKGs:") != -1) {
+        var packages = lines[0].substring(6,lines[0].length - 1);
+        packages = packages.split(",").join(" ");
+        var cmd = "apm install " + packages;
+        exec(cmd,function(error,stdout,stderror) {
+          console.log(stdout);
+          if(stderror.length == 0) {
+            console.log("Packages Loaded...");
+          }
+        });
+      } else {
+        console.log("Not a Valid Configuration File");
+      }
+    }
+  });
+}
+
+
 
 
 
 module.exports.list = list;
 module.exports.clean = clean;
 module.exports.save = save;
+module.exports.load = load;

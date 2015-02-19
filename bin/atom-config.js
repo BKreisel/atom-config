@@ -31,7 +31,7 @@ program
 
 program
   .command('save [filename]')
-  .description('remove all installed packages in Atom')
+  .description('Save current Atom packages to a config file')
   .action(function(filename){
     if(typeof(filename) === "undefined") {
       console.log("Using default filename: atom.config");
@@ -39,6 +39,24 @@ program
     }
     packages.save(filename);
 });
+
+program
+  .command('load [filename]')
+  .description('load Atom packages from a config file')
+  .action(function(filename){
+    if(typeof(filename) != "undefined") {
+      packages.load(filename);
+    } else {
+      console.log("Missing argument: filename");
+      program.help();
+    }
+});
+
+program
+  .command('*')
+  .action(function(){
+    program.help();
+  });
 
 program.version(version);
 
