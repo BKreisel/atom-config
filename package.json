@@ -1,6 +1,6 @@
 {
   "name": "atom-config",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "Configuration Tool for sharing configurations across multiple installations of Github's Atom Text Editor",
   "bin": {
     "atom-config": "bin/atom-config.js"
