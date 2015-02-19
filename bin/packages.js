@@ -5,6 +5,7 @@
  */
 
 var exec = require('child_process').exec;
+var spawn = require('child_process').spawn;
 var helpers = require('./help');
 var sys = require('sys');
 var fs = require('fs');
@@ -76,13 +77,14 @@ var load = function(filename) {
       lines = data.split("\n");
       if(lines[0].indexOf("PKGs:") != -1) {
         var packages = lines[0].substring(6,lines[0].length - 1);
-        packages = packages.split(",").join(" ");
-        var cmd = "apm install " + packages;
-        exec(cmd,function(error,stdout,stderror) {
-          console.log(stdout);
-          if(stderror.length == 0) {
-            console.log("Packages Loaded...");
-          }
+        packages = packages.split(",");
+        packages.unshift("install");
+        var cmd = spawn("apm",packages);
+        cmd.stdout.on('data', function (data) {
+          console.log(String(data));
+        });
+        cmd.stderr.on('data', function (data) {
+          console.log(String(data));
         });
       } else {
         console.log("Not a Valid Configuration File");
